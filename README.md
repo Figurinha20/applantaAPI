@@ -2,14 +2,10 @@
 
 BD_APPLANTA
 
-## Requesitos: 
- - NodeJS; 
-
 ## Instalação 
 
 ```sh
-$ git clone https://github.com/joaoadrianoferreira/ESMAD-TSIW-M04-ESMAD-DTAM-M02-MVC-NODEJS-REST
-$ cd ESMAD-TSIW-M04-ESMAD-DTAM-M02-MVC-NODEJS-REST/
+$ git clone https://github.com/Figurinha20/applantaAPI.git
 $ npm install
-$ node index.js ou nodemon
+$ node index.js
 ```
