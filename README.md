@@ -11,10 +11,10 @@ Será também possivel criar amizades com as plantas e listar estas amizades e a
 ##### Realizado por José Santos | Luís Sampaio | Rui Gonçalves
 
 
-## Documentação Prévia
+### Documentação Prévia
 ![Documentação Prévia](https://cdn.discordapp.com/attachments/158606760444297216/789138532680859688/unknown.png "Documentação do Chinês")
 
-## Instalação 
+### Instalação 
 
 ```sh
 $ git clone https://github.com/Figurinha20/applantaAPI.git
