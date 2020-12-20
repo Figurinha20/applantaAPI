@@ -1,0 +1,1 @@
+Estarão aqui funções gerais como por exemplo funções de gestão de tokens ou validações dos mesmos. 
