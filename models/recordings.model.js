@@ -11,7 +11,7 @@ Recording.init({
     code: {type: DataTypes.STRING(255), allowNull: false}
 }, { sequelize, modelName: "Recording", createdAt:false, updatedAt:false });
 
-Recording.belongsTo(Plant,{foreignKey:"plant_token", keyType:DataTypes.STRING(255)});
+Recording.belongsTo(Plant,{foreignKey:"plant_id", keyType:DataTypes.INTEGER});
 Recording.belongsTo(User,{foreignKey:"user_id", keyType:DataTypes.INTEGER});
 
 sequelize.sync().then().catch(error => {

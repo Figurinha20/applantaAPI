@@ -5,7 +5,7 @@ const create = (req, res) => {
     Recording.create({
         name: req.body.name,
         code: req.body.code,
-        plant_token: req.body.plant_token,
+        plant_id: req.body.plant_id,
         user_id: req.body.user_id,
     }).then(newRecording => {
         res.status(200).json(newRecording); 

@@ -10,7 +10,7 @@ Friendship.init({
     photo: {type: DataTypes.STRING(255)}
 }, { sequelize, modelName: "Friendship", createdAt:false, updatedAt:false });
 
-Plant.belongsToMany(User,{through: Friendship, foreignKey:"plant_token", keyType:DataTypes.STRING(255), primaryKey: true});
+Plant.belongsToMany(User,{through: Friendship, foreignKey:"plant_id", keyType:DataTypes.INTEGER, primaryKey: true});
 User.belongsToMany(Plant,{through: Friendship, foreignKey:"user_id", keyType:DataTypes.INTEGER, primaryKey: true});
 
 sequelize.sync().then().catch(error => {

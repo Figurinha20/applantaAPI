@@ -5,11 +5,11 @@ const updateOrcreate = (req, res) => {
     Friendship.findOrCreate({
         where: {
             user_id: req.params.user_id,
-            plant_token: req.params.plant_token
+            plant_id: req.params.plant_id
         },
         defaults: {
             user_id: req.params.user_id,
-            plant_token: req.params.plant_token,
+            plant_id: req.params.plant_id,
             friend_lvl: 1,
             photo: null
         }
@@ -31,7 +31,7 @@ const addPhoto = (req, res) => {
     Friendship.update({photo: req.body.photo}, {
         where: {
             user_id:req.params.user_id,
-            plant_token:req.params.plant_token
+            plant_id:req.params.plant_id
         }
     }).then(updatedFriendship => {
         res.status(200).json(updatedFriendship)

@@ -19,7 +19,7 @@ const create = (req, res) => {
 //get a plant by using it's bluetooth token
 const getPlantByBluetooth = (req, res) => {
     Plant.findOne({
-        attributes:["bt_token", "name", "species", "desc"],
+        attributes:["plant_id", "name", "species", "desc"],
         where: {bt_token: req.params.bt_token},
         include: Nature
     }).then(plant => {

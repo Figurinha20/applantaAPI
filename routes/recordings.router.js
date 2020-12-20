@@ -6,7 +6,7 @@ const { validationResult, body, param } = require('express-validator')
 router.post('/', [
     body('name').notEmpty().escape(), 
     body('code').notEmpty().escape(), 
-    body('plant_token').notEmpty().escape(), 
+    body('plant_id').notEmpty().isNumeric(), 
     body('user_id').notEmpty().isNumeric(),
 ],  function (req, res) {
     const errors = validationResult(req); 

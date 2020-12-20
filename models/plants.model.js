@@ -5,7 +5,7 @@ const Nature = require("./natures.model");
 class Plant extends Model {};
 
 Plant.init({
-    bt_token: {type: DataTypes.STRING(255), primaryKey: true, allowNull: false},
+    bt_token: {type: DataTypes.STRING(255), unique: true, allowNull: false},
     name: {type: DataTypes.STRING(31), allowNull: false},
     species: {type: DataTypes.STRING(31), allowNull: false},
     desc: {type: DataTypes.STRING(511), allowNull: false},
