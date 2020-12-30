@@ -8,7 +8,8 @@ const create = (req, res) => {
         name: req.body.name,
         species: req.body.species,
         desc: req.body.desc,
-        nature_id: req.body.nature_id
+        nature_id: req.body.nature_id,
+        pitch: Math.floor(Math.random() * 10) + 1
     }).then(newPlant => {
         res.status(200).json(newPlant); 
     }).catch(error => {
@@ -19,7 +20,7 @@ const create = (req, res) => {
 //get a plant by using it's bluetooth token
 const getPlantByBluetooth = (req, res) => {
     Plant.findOne({
-        attributes:["id", "name", "species", "desc"],
+        attributes:["id", "name", "species", "desc", "pitch"],
         where: {bt_token: req.params.bt_token},
         include: Nature
     }).then(plant => {

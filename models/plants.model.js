@@ -9,6 +9,7 @@ Plant.init({
     name: {type: DataTypes.STRING(31), allowNull: false},
     species: {type: DataTypes.STRING(31), allowNull: false},
     desc: {type: DataTypes.STRING(511), allowNull: false},
+    pitch: {type: DataTypes.INTEGER, allowNull:false},
 }, { sequelize, modelName: "Plant", createdAt:false, updatedAt:false });
 
 Plant.belongsTo(Nature,{foreignKey:"nature_id", keyType:DataTypes.INTEGER})
