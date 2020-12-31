@@ -31,7 +31,21 @@ const getUserRecordings = (req, res) => {
     })
 }
 
+//login the user trough their access_token
+const login = (req, res) => {
+    User.findOne({
+        attributes:["id", "name", "exp", "admin"],
+        where: {access_token: req.params.access_token}
+    }).then(user => {
+        res.status(200).json(user);
+    }).catch(error => {
+        res.status(400).send(error)
+    })
+}
+
+
 //falta a parte dos logins, access_token e refresh_token mas como nunca usei o google fica assim por agora
 
 exports.create = create; 
 exports.getUserRecordings = getUserRecordings;
+exports.login = login;
