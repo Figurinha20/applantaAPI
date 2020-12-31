@@ -7,7 +7,6 @@ router.post('/', [
     body('name').notEmpty().escape(), 
     body('access_token').notEmpty().escape(), 
     body('refresh_token').notEmpty().escape(), 
-    body('age').notEmpty().isNumeric(),
 ],  function (req, res) {
     const errors = validationResult(req); 
     if (errors.isEmpty()) {

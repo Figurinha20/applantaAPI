@@ -9,7 +9,6 @@ const create = (req, res) => {
         name: req.body.name,
         access_token: req.body.access_token,
         refresh_token: req.body.refresh_token,
-        age: req.body.age,
         exp: 0,
         admin: false
     }).then(newUser => {
