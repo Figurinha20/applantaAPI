@@ -3,6 +3,7 @@ const Recording = require("../models/recordings.model");
 const Plant = require("../models/plants.model");
 const Nature = require("../models/natures.model");
 
+
 //create a new User
 const create = (req, res) => {
     User.create({
@@ -43,9 +44,22 @@ const login = (req, res) => {
     })
 }
 
+//update the user's exp
+const update = (req, res) => {
+    User.update({
+        exp: req.body.exp
+    },
+    {where: {id: req.params.id}}
+    ).then(updatedUser =>{
+        res.status(200).json(updatedUser);
+    }).catch(error => {
+        res.status(400).send(error);
+    })
+}
 
 //falta a parte dos logins, access_token e refresh_token mas como nunca usei o google fica assim por agora
 
 exports.create = create; 
 exports.getUserRecordings = getUserRecordings;
 exports.login = login;
+exports.update = update;

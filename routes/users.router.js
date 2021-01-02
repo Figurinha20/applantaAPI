@@ -41,4 +41,16 @@ router.get('/:id/recordings', [
     }
 })
 
+router.put('/:id', [
+    param('id').notEmpty().isNumeric(),
+    body('exp').notEmpty().isNumeric()
+],  function (req, res) {
+    const errors = validationResult(req); 
+    if (errors.isEmpty()) {
+        controller.update(req, res); 
+    } else {
+        res.status(404).json({errors: errors.array()})
+    }
+})
+
 module.exports = router
