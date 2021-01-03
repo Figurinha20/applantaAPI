@@ -2,6 +2,7 @@ const User = require("../models/users.model");
 const Recording = require("../models/recordings.model");
 const Plant = require("../models/plants.model");
 const Nature = require("../models/natures.model");
+const Friendship = require("../models/friendships.model");
 
 
 //create a new User
@@ -32,16 +33,21 @@ const getUserRecordings = (req, res) => {
     })
 }
 
-//login the user trough their access_token
-const login = (req, res) => {
-    User.findOne({
+//login the user trough their access_token (async porque faço duas queries e a segunda precisa de um dado da primeira)
+const login = async (req, res) => {
+    try {
+        let user = await User.findOne({
         attributes:["id", "name", "exp", "admin"],
         where: {access_token: req.params.access_token}
-    }).then(user => {
-        res.status(200).json(user);
-    }).catch(error => {
-        res.status(400).send(error)
-    })
+    });
+    const friendshipCount = await Friendship.count({
+            where: {user_id: user.id}
+        });
+    user.setDataValue("friendshipCount", friendshipCount)
+    res.status(200).json(user);
+    } catch (error) {
+        res.status(400).send(error);
+    }
 }
 
 //update the user's exp

@@ -15,7 +15,7 @@ const updateOrcreate = (req, res) => {
         }
     }).then(newFriendship => {
         if (newFriendship[1]){
-            res.status(200).json({newFriendship}); 
+            res.status(200).json(newFriendship); 
         }
         else {
             newFriendship[0].friend_lvl++;
