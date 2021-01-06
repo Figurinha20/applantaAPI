@@ -6,8 +6,8 @@ class User extends Model {};
 User.init({
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING(31), allowNull: false},
-    access_token: {type: DataTypes.STRING(255), allowNull: false},
-    refresh_token: {type: DataTypes.STRING(255), allowNull: false},
+    access_token: {type: DataTypes.STRING, allowNull: false},
+    refresh_token: {type: DataTypes.STRING, allowNull: false},
     exp: {type: DataTypes.INTEGER},
     admin: {type: DataTypes.BOOLEAN, allowNull: false},
 }, { sequelize, modelName: "User", createdAt:false, updatedAt:false });
