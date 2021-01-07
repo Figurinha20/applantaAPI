@@ -45,8 +45,13 @@ const login = async (req, res) => {
             where: {user_id: user.id}
         });
         user.setDataValue("friendshipCount", friendshipCount)
+        user.setDataValue("userExists", true)
+        res.status(200).json(user);
     }
-    res.status(200).json(user);
+    else{
+        res.status(200).json({"userExists": false})
+    }
+    
     } catch (error) {
         res.status(400).send(error);
     }
