@@ -40,10 +40,12 @@ const login = async (req, res) => {
         attributes:["id", "name", "exp", "admin"],
         where: {access_token: req.params.access_token}
     });
+    if (user){
     const friendshipCount = await Friendship.count({
             where: {user_id: user.id}
         });
-    user.setDataValue("friendshipCount", friendshipCount)
+        user.setDataValue("friendshipCount", friendshipCount)
+    }
     res.status(200).json(user);
     } catch (error) {
         res.status(400).send(error);
