@@ -41,6 +41,18 @@ router.get('/:id/recordings', [
     }
 })
 
+//get user friendships trough user's id
+router.get('/:id/friendships', [
+    param('id').notEmpty().isNumeric()
+],  function (req, res) {
+    const errors = validationResult(req); 
+    if (errors.isEmpty()) {
+        controller.getUserFriendships(req, res); 
+    } else {
+        res.status(404).json({errors: errors.array()})
+    }
+})
+
 router.put('/:id', [
     param('id').notEmpty().isNumeric(),
     body('exp').notEmpty().isNumeric()

@@ -23,11 +23,30 @@ const create = (req, res) => {
 //get all the recordings of a user
 const getUserRecordings = (req, res) => {
     Recording.findAll({
-        attributes:["id", "name", "code"],
+        attributes:["id","name", "code"],
         where: {user_id: req.params.id},
         include: {model: Plant, attributes:["name", "species", "desc", "nature_id"]}
     }).then(recordingList => {
         res.status(200).json(recordingList); 
+    }).catch(error => {
+        res.status(400).send(error); 
+    })
+}
+
+//get all the friends of a user
+const getUserFriendships = (req, res) => {
+    Friendship.findAll({
+        attributes:["friend_lvl", "photo"],
+        where: {user_id: req.params.id},
+        include : [
+            { 
+              model: Plant, 
+              required: true,
+              attributes: ["name", "species", "desc"],
+              include: [{model: Nature, required: true, attributes: ["desc"]}]}
+          ]
+    }).then(friendshipList => {
+        res.status(200).json(friendshipList); 
     }).catch(error => {
         res.status(400).send(error); 
     })
@@ -62,7 +81,7 @@ const update = (req, res) => {
     User.update({
         exp: req.body.exp
     },
-    {where: {id: req.params.id}}
+    {where: {user_id: req.params.id}}
     ).then(updatedUser =>{
         res.status(200).json(updatedUser);
     }).catch(error => {
@@ -70,9 +89,8 @@ const update = (req, res) => {
     })
 }
 
-//falta a parte dos logins, access_token e refresh_token mas como nunca usei o google fica assim por agora
-
 exports.create = create; 
 exports.getUserRecordings = getUserRecordings;
+exports.getUserFriendships = getUserFriendships;
 exports.login = login;
 exports.update = update;
