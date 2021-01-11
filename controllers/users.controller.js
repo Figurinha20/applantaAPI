@@ -23,9 +23,9 @@ const create = (req, res) => {
 //get all the recordings of a user
 const getUserRecordings = (req, res) => {
     Recording.findAll({
-        attributes:["id","name", "code"],
+        attributes:["name", "code"],
         where: {user_id: req.params.id},
-        include: {model: Plant, attributes:["name", "species", "desc", "nature_id"]}
+        include: {model: Plant, attributes:["name", "pitch"]}
     }).then(recordingList => {
         res.status(200).json(recordingList); 
     }).catch(error => {
