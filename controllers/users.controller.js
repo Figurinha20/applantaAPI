@@ -23,7 +23,7 @@ const create = (req, res) => {
 //get all the recordings of a user
 const getUserRecordings = (req, res) => {
     Recording.findAll({
-        attributes:["name", "code"],
+        attributes:["id", "name", "code"],
         where: {user_id: req.params.id},
         include: {model: Plant, attributes:["name", "pitch"]}
     }).then(recordingList => {
