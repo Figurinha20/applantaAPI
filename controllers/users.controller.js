@@ -81,7 +81,7 @@ const update = (req, res) => {
     User.update({
         exp: req.body.exp
     },
-    {where: {user_id: req.params.id}}
+    {where: {id: req.params.id}}
     ).then(updatedUser =>{
         res.status(200).json(updatedUser);
     }).catch(error => {

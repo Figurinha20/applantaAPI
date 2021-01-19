@@ -10,6 +10,11 @@ var users = require("./routes/users.router");
 var recordings = require("./routes/recordings.router");
 var friendships = require("./routes/friendships.router");
 
+//Swagger
+const expressSwagger = require("express-swagger-generator")(app);
+const options = require("./swagger_conf");
+expressSwagger(options);
+
 app.use(express.json());
 app.use("/natures", natures);
 app.use("/plants", plants);

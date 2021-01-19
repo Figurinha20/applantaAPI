@@ -5,6 +5,15 @@ const Plant = require("./plants.model");
 
 class Recording extends Model {};
 
+/**
+ * @typedef Recording
+ * @property {integer} id.required - Auto Increments
+ * @property {string} name.required 
+ * @property {string} code.required
+ * @property {integer} plant_id.required
+ * @property {integer} user_id.required
+ */
+
 Recording.init({
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING(31), allowNull: false},

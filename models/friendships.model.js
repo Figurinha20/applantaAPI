@@ -5,6 +5,15 @@ const Plant = require("./plants.model");
 
 class Friendship extends Model {};
 
+/**
+ * @typedef Friendship
+ * @property {integer} id.required - Auto Increments
+ * @property {integer} friend_lvl.required 
+ * @property {string} photo
+ * @property {integer} plant_id.required - Primary Key
+ * @property {integer} user_id.required - Primary Key
+ */
+
 Friendship.init({
     friend_lvl: {type: DataTypes.INTEGER(5), allowNull: false},
     photo: {type: DataTypes.STRING(255)}

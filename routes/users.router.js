@@ -3,7 +3,15 @@ var router = express.Router()
 var controller = require("../controllers/users.controller")
 const { validationResult, body, param } = require('express-validator')
 
-//register user
+/**
+ * Create a new User
+ * @route POST /users
+ * @group Users
+ * @param {object} object.body - User - eg. {"name": "Rakeesh", "access_token": "12345", "refresh_token": "54321"}
+ * @returns {object} 200 - New User
+ * @returns {Error} 400 - Unexpected Error
+ */
+
 router.post('/', [
     body('name').notEmpty().escape(), 
     body('access_token').notEmpty().escape(), 
@@ -17,7 +25,15 @@ router.post('/', [
     }
 })
 
-//login user: get user info trough access_token
+/**
+ * Get a user
+ * @route GET /users/{access_token}
+ * @group Users
+ * @param {string} access_token.path - User's Access Token
+ * @returns {object} 200 - Found User
+ * @returns {Error} 400 - Unexpected Error
+ */
+
 router.get('/:access_token', [
     param('access_token').notEmpty().escape()
 ],  function (req, res) {
@@ -29,7 +45,14 @@ router.get('/:access_token', [
     }
 })
 
-//get user recordings trough user's id
+/**
+ * Get a User's Recordings
+ * @route GET /users/{id}/recordings
+ * @group Users
+ * @param {integer} id.path - User's Id
+ * @returns {object} 200 - Recording List
+ * @returns {Error} 400 - Unexpected Error
+ */
 router.get('/:id/recordings', [
     param('id').notEmpty().isNumeric()
 ],  function (req, res) {
@@ -41,7 +64,14 @@ router.get('/:id/recordings', [
     }
 })
 
-//get user friendships trough user's id
+/**
+ * Get a User's Friendships
+ * @route GET /users/{id}/friendships
+ * @group Users
+ * @param {integer} id.path - User's Id
+ * @returns {object} 200 - Friendship List
+ * @returns {Error} 400 - Unexpected Error
+ */
 router.get('/:id/friendships', [
     param('id').notEmpty().isNumeric()
 ],  function (req, res) {
@@ -53,6 +83,15 @@ router.get('/:id/friendships', [
     }
 })
 
+/**
+ * Update a User's Exp
+ * @route PUT /users/{id}
+ * @group Users
+ * @param {integer} id.path - User's Id
+ * @param {object} exp.body - User's Exp Value - eg. {"exp": 50}
+ * @returns {boolean} 200 - Updated
+ * @returns {Error} 400 - Unexpected Error
+ */
 router.put('/:id', [
     param('id').notEmpty().isNumeric(),
     body('exp').notEmpty().isNumeric()
