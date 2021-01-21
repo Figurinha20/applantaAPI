@@ -10,7 +10,7 @@ const options = {
         produces: [
             "application/json"
         ],
-        schemes: ["http", "https"]
+        schemes: ["https"]
     },
     basedir: __dirname,
     files: ["./routes/**/*.js", "./models/**/*.js"]
