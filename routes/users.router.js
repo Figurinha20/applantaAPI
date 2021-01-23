@@ -89,7 +89,7 @@ router.get('/:id/friendships', [
  * @group Users
  * @param {integer} id.path - User's Id
  * @param {object} exp.body - User's Exp Value - eg. {"exp": 50}
- * @returns {boolean} 200 - Updated
+ * @returns {object} 200 - Updated
  * @returns {Error} 400 - Unexpected Error
  */
 router.put('/:id', [

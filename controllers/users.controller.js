@@ -83,7 +83,7 @@ const update = (req, res) => {
     },
     {where: {id: req.params.id}}
     ).then(updatedUser =>{
-        res.status(200).json(updatedUser);
+        res.status(200).json({"updated": updatedUser[0]});
     }).catch(error => {
         res.status(400).send(error);
     })
