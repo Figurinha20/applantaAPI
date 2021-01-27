@@ -9,7 +9,7 @@ class Recording extends Model {};
  * @typedef Recording
  * @property {integer} id.required - Auto Increments
  * @property {string} name.required 
- * @property {string} code.required
+ * @property {text} code.required
  * @property {integer} plant_id.required
  * @property {integer} user_id.required
  */
@@ -17,7 +17,7 @@ class Recording extends Model {};
 Recording.init({
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING(31), allowNull: false},
-    code: {type: DataTypes.STRING(255), allowNull: false}
+    code: {type: DataTypes.TEXT, allowNull: false}
 }, { sequelize, modelName: "Recording", createdAt:false, updatedAt:false });
 
 Recording.belongsTo(Plant,{foreignKey:"plant_id", keyType:DataTypes.INTEGER});
