@@ -48,13 +48,13 @@ const update = (req, res) => {
     }).then(updatedRecording => {
         if (updatedRecording[0]){
             res.status(200).json({
-                message: "Recording Successfully Updated",
+                message: "Nome alterado!",
                 updatedRecording: updatedRecording[0],
                 updated: updatedRecording[1]
             }); 
         }
         else {res.status(200).json({
-            message: "Recording Not Updated",
+            message: "Nome sem alterações :/",
             updatedRecording: updatedRecording[0],
             updated: updatedRecording[1]
         })}
