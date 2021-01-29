@@ -11,8 +11,9 @@ Será também possivel criar amizades com as plantas e listar estas amizades e a
 ##### Realizado por José Santos | Luís Sampaio | Rui Gonçalves
 
 
-### Documentação Prévia
-![Documentação Prévia](https://cdn.discordapp.com/attachments/158606760444297216/789138532680859688/unknown.png "Documentação do Chinês")
+### Documentação
+A documentação deste projeto foi realizada em Swagger e encontra-se em:
+https://applanta-api.herokuapp.com/api-docs
 
 ### Instalação 
 
